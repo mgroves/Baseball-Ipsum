@@ -28,7 +28,7 @@ namespace BaseballIpsum.Tests
             _sentence.Last().ShouldEqual('.');
         It should_have_a_period_right_after_the_last_word = () =>
             _sentence.EndsWith(" .").ShouldBeFalse();
-        It should_return_7_to_10_words = () =>
-            (_numWords >= 7 && _numWords <= 10).ShouldBeTrue();
+        It should_return_at_least_7_words = () =>
+            _numWords.ShouldBeGreaterThanOrEqualTo(7);
     }
 }

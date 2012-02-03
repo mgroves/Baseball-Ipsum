@@ -17,8 +17,8 @@ namespace BaseballIpsum
         public string GetRandomSentence(bool withComma = false)
         {
             var sb = new StringBuilder();
-            var sixOrSeven = _rand.Next(7, 10);
-            for (int i = 0; i < sixOrSeven; i++)
+            var sevenToTen = _rand.Next(7, 10);
+            for (int i = 0; i < sevenToTen; i++)
             {
                 sb.Append(_dict.GetRandomWord());
                 if (withComma && (i == 4))
