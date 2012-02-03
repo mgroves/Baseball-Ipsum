@@ -30,7 +30,18 @@ namespace BaseballIpsum.Web.Controllers
                 model.GeneratedParagraphs = new List<string>();
                 for (int i = 0; i < model.NumParagraphs; i++)
                 {
-                    model.GeneratedParagraphs.Add(_paragraphGenerator.GetParagraph());
+                    var paragraph = _paragraphGenerator.GetParagraph();
+                    if (model.StartWithBaseballIpsum)
+                    {
+                        var tokens = paragraph.Split(' ');
+                        tokens[0] = "Baseball";
+                        tokens[1] = "ipsum";
+                        tokens[2] = "dolor";
+                        tokens[3] = "sit";
+                        tokens[4] = "amet";
+                        paragraph = string.Join(" ", tokens);
+                    }
+                    model.GeneratedParagraphs.Add(paragraph);
                 }
             }
             return View(model);
