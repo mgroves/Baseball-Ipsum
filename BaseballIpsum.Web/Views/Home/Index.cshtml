@@ -1,0 +1,46 @@
+﻿@model BaseballIpsum.Web.Models.SubmitFormViewModel
+
+@{
+    ViewBag.Title = "Baseball Ipsum";
+}
+
+@if (@Model.GeneratedParagraphs != null)
+{
+    <div>
+    @foreach (var paragraph in @Model.GeneratedParagraphs)
+    {
+        <p>@paragraph</p>
+    }
+    </div>
+}
+
+<p>I personally cannot get enough baseball.  Give this shameless knock-off of <a href="http://baconipsum.com">Bacon Ipsum</a> a try!</p>
+
+@using (Html.BeginForm("Index","Home", FormMethod.Post, new { id = "make-it-meaty"}))
+{
+    @Html.ValidationSummary(false)
+    <table>
+        <tbody>
+            <tr>
+                <td>@Html.LabelFor(model => model.NumParagraphs)</td>
+                <td>
+                    @Html.TextBoxFor(model => model.NumParagraphs, new { maxlength = "2", size = "5" })
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    @Html.EditorFor(model => model.StartWithBaseballIpsum)
+                    @Html.LabelFor(model => model.StartWithBaseballIpsum)
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Play ball!" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}
+            

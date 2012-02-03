@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" type="text/css" media="all" href="@Url.Content("~/Content/style.css")" /></head>
+
+<body>    <div id="wrapper">    	<div id="header">    		<div id="masthead">			<div id="branding" role="banner">				<img src="@Url.Content("~/Content/header-with-text.jpg")" width="940" height="371" alt="" />			</div>
+			<div id="access" role="navigation">				<div class="menu-header">
+                    <ul id="menu-main" class="menu">
+                        <li class="menu-item current-menu-item"><a href="/">Home</a></li>
+                        <li class="menu-item"><a href="/Home/RestApi">REST API</a></li>
+                        <li class="menu-item"><a href="/Home/About">About</a></li>
+                    </ul>                </div>            </div>		</div>
+	    <div id="main">		    <div id="container">
+			    <div id="content">
+				    <div class="page">
+					    <div class="entry-content">
+                            @RenderBody()
+					    </div>
+				    </div>
+			    </div>
+		    </div>
+	    </div>
+	    <div id="footer">		    <div id="colophon">			    <div id="site-info">                    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>                    <g:plusone size="small"></g:plusone>				    <a href="/" title="Baseball Ipsum" rel="home">Baseball Ipsum</a>                    <br />                    Photo licensed under <a href="http://commons.wikimedia.org/wiki/File:Derrek_Lee_and_Joey_Votto_on_June_26,_2011.jpg">Creative Commons</a>			    </div>
+			    <div id="site-generator">				    <a href="http://www.appharbor.com/">Powered by AppHarbor and ASP.NET</a>			    </div>		    </div>	    </div>    </div></body></html>

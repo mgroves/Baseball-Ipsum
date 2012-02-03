@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseballIpsum", "BaseballIp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseballIpsum.Tests", "BaseballIpsum.Tests\BaseballIpsum.Tests.csproj", "{A14C65F4-FDED-4BBB-A96A-0B992E9294B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseballIpsum.Web", "BaseballIpsum.Web\BaseballIpsum.Web.csproj", "{A8343380-7B97-438B-8322-07B47833AC50}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{A14C65F4-FDED-4BBB-A96A-0B992E9294B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A14C65F4-FDED-4BBB-A96A-0B992E9294B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A14C65F4-FDED-4BBB-A96A-0B992E9294B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8343380-7B97-438B-8322-07B47833AC50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8343380-7B97-438B-8322-07B47833AC50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8343380-7B97-438B-8322-07B47833AC50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8343380-7B97-438B-8322-07B47833AC50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
