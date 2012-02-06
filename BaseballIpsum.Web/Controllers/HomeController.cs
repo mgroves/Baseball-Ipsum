@@ -31,7 +31,7 @@ namespace BaseballIpsum.Web.Controllers
                 for (int i = 0; i < model.NumParagraphs; i++)
                 {
                     var paragraph = _paragraphGenerator.GetParagraph();
-                    if (model.StartWithBaseballIpsum)
+                    if (model.StartWithBaseballIpsum && i==0)
                     {
                         var tokens = paragraph.Split(' ');
                         tokens[0] = "Baseball";
