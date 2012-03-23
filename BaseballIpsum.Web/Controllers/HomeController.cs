@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Web.Mvc;
 using BaseballIpsum.Web.Models;
 
@@ -6,19 +5,16 @@ namespace BaseballIpsum.Web.Controllers
 {
     public class HomeController : Controller
     {
-        ParagraphGenerator _paragraphGenerator;
+        readonly ParagraphService _paragraphService;
 
         public HomeController()
         {
-            var dict = new IpsumDictionary();
-            var sent = new SentenceGenerator(dict);
-            _paragraphGenerator = new ParagraphGenerator(sent);
+            _paragraphService = new ParagraphService();
         }
 
         public ViewResult Index()
         {
-            var initialModel = new SubmitFormViewModel();
-            initialModel.NumParagraphs = 5;
+            var initialModel = new SubmitFormViewModel {NumParagraphs = 5};
             return View(initialModel);
         }
 
@@ -27,28 +23,16 @@ namespace BaseballIpsum.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.GeneratedParagraphs = new List<string>();
-                for (int i = 0; i < model.NumParagraphs; i++)
-                {
-                    var paragraph = _paragraphGenerator.GetParagraph();
-                    if (model.StartWithBaseballIpsum && i==0)
-                    {
-                        var tokens = paragraph.Split(' ');
-                        tokens[0] = "Baseball";
-                        tokens[1] = "ipsum";
-                        tokens[2] = "dolor";
-                        tokens[3] = "sit";
-                        tokens[4] = "amet";
-                        paragraph = string.Join(" ", tokens);
-                    }
-                    model.GeneratedParagraphs.Add(paragraph);
-                }
+                model.GeneratedParagraphs = _paragraphService.GetParagraphs(model.NumParagraphs, model.StartWithBaseballIpsum);
             }
             return View(model);
         }
 
         public ViewResult RestApi()
         {
+            ViewBag.BaseUrl = "http://" + Request.ServerVariables["SERVER_NAME"];
+            if (Request.ServerVariables["SERVER_PORT"] != "80")
+                ViewBag.BaseUrl += ":" + Request.ServerVariables["SERVER_PORT"];
             return View();
         }
 

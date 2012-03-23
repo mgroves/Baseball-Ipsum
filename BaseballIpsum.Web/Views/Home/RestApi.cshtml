@@ -2,4 +2,19 @@
     ViewBag.Title = "Json API | Baseball Ipsum";
 }
 
+<p>The Baseball Ipsum API is a REST interface that returns JSON. Pass in the following parameters using an HTTP GET and you'll get a Json string array of paragraphs.</p>
+
+<p>Parameters:</p>
+
+<ul>
+<li><strong>paras:</strong> <em>optional</em> number of paragraphs, defaults to 1, maximum of 25</li>
+<li><strong>startwithlorem:</strong> <em>optional</em> pass <strong>true</strong> to start the first paragraph with 'Baseball ipsum dolor sit amet'</li>
+</ul>
+
+<p>Examples:</p>
+<ul>
+<li><a href="@ViewBag.BaseUrl/api/?paras=5">@ViewBag.BaseUrl/api/?paras=5</a></li>
+<li><a href="@ViewBag.BaseUrl/?paras=1&startwithlorem=true">@ViewBag.BaseUrl/api/?paras=1&startwithlorem=true</a></li>
+</ul>
+
 <p>Looking for a REST API? There isn't one, yet.  Do you want one?  <a href="https://github.com/mgroves/Baseball-Ipsum/issues/1">Leave a comment here on Github</a>. </p>
