@@ -31,8 +31,6 @@ namespace BaseballIpsum.Web.Controllers
         public ViewResult RestApi()
         {
             ViewBag.BaseUrl = "http://" + Request.ServerVariables["SERVER_NAME"];
-            if (Request.ServerVariables["SERVER_PORT"] != "80")
-                ViewBag.BaseUrl += ":" + Request.ServerVariables["SERVER_PORT"];
             return View();
         }
 
