@@ -1,37 +1,34 @@
-using System.Collections.Generic;
+﻿namespace BaseballIpsum.Web.Models;
 
-namespace BaseballIpsum.Web.Models
+public class ParagraphService
 {
-    public class ParagraphService
+    readonly ParagraphGenerator _paragraphGenerator;
+
+    public ParagraphService()
     {
-        readonly ParagraphGenerator _paragraphGenerator;
+        var dict = new IpsumDictionary();
+        var sent = new SentenceGenerator(dict);
+        _paragraphGenerator = new ParagraphGenerator(sent);
+    }
 
-        public ParagraphService()
+    public List<string>? GetParagraphs(int paras, bool startwithlorem)
+    {
+        var generatedParagraphs = new List<string>();
+        for (int i = 0; i < paras; i++)
         {
-            var dict = new IpsumDictionary();
-            var sent = new SentenceGenerator(dict);
-            _paragraphGenerator = new ParagraphGenerator(sent);
-        }
-
-        public IList<string> GetParagraphs(int paras, bool startwithlorem)
-        {
-            var generatedParagraphs = new List<string>();
-            for (int i = 0; i < paras; i++)
+            var paragraph = _paragraphGenerator.GetParagraph();
+            if (startwithlorem && i == 0)
             {
-                var paragraph = _paragraphGenerator.GetParagraph();
-                if (startwithlorem && i == 0)
-                {
-                    var tokens = paragraph.Split(' ');
-                    tokens[0] = "Baseball";
-                    tokens[1] = "ipsum";
-                    tokens[2] = "dolor";
-                    tokens[3] = "sit";
-                    tokens[4] = "amet";
-                    paragraph = string.Join(" ", tokens);
-                }
-                generatedParagraphs.Add(paragraph);
+                var tokens = paragraph.Split(' ');
+                tokens[0] = "Baseball";
+                tokens[1] = "ipsum";
+                tokens[2] = "dolor";
+                tokens[3] = "sit";
+                tokens[4] = "amet";
+                paragraph = string.Join(" ", tokens);
             }
-            return generatedParagraphs;
+            generatedParagraphs.Add(paragraph);
         }
+        return generatedParagraphs;
     }
 }

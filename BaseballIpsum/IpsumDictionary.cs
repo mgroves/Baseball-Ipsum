@@ -1,41 +1,36 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
+﻿namespace BaseballIpsum;
 
-namespace BaseballIpsum
+public class IpsumDictionary
 {
-    public class IpsumDictionary
+    readonly string[] _words;
+    readonly Random _rand;
+    readonly int _numWords;
+
+    public IpsumDictionary()
     {
-        readonly string[] _words;
-        readonly Random _rand;
-        readonly int _numWords;
+        _rand = new Random(DateTime.Now.Millisecond);
+        _words = LoadFromTxtFile();
+        _numWords = _words.Length;
+    }
 
-        public IpsumDictionary()
+    string[] LoadFromTxtFile()
+    {
+        var assembly = GetType().Assembly;
+        using(var stream = assembly.GetManifestResourceStream("BaseballIpsum.words.txt"))
         {
-            _rand = new Random(DateTime.Now.Millisecond);
-            _words = LoadFromTxtFile();
-            _numWords = _words.Length;
-        }
-
-        string[] LoadFromTxtFile()
-        {
-            var assembly = GetType().Assembly;
-            using(var stream = assembly.GetManifestResourceStream("BaseballIpsum.words.txt"))
+            using(var reader = new StreamReader(stream))
             {
-                using(var reader = new StreamReader(stream))
-                {
-                    var words = new List<string>();
-                    string line;
-                    while((line = reader.ReadLine()) != null)
-                        words.Add(line.Trim());
-                    return words.ToArray();
-                }
+                var words = new List<string>();
+                string line;
+                while((line = reader.ReadLine()) != null)
+                    words.Add(line.Trim());
+                return words.ToArray();
             }
         }
+    }
 
-        public string GetRandomWord()
-        {
-            return _words[_rand.Next(0, _numWords-1)];
-        }
+    public string GetRandomWord()
+    {
+        return _words[_rand.Next(0, _numWords-1)];
     }
 }

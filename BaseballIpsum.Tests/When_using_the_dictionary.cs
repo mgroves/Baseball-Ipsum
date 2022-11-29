@@ -1,23 +1,22 @@
-using Machine.Specifications;
+﻿using Machine.Specifications;
 
-namespace BaseballIpsum.Tests
+namespace BaseballIpsum.Tests;
+
+public class When_using_the_dictionary
 {
-    public class When_using_the_dictionary
-    {
-        static IpsumDictionary _ipsumDictionary;
-        static string _word;
+    static IpsumDictionary _ipsumDictionary;
+    static string _word;
 
-        Establish context = () =>
-            {
-                _ipsumDictionary = new IpsumDictionary();
-            };
+    Establish context = () =>
+    {
+        _ipsumDictionary = new IpsumDictionary();
+    };
         
-        Because of = () =>
-            {
-                _word = _ipsumDictionary.GetRandomWord();
-            };
+    Because of = () =>
+    {
+        _word = _ipsumDictionary.GetRandomWord();
+    };
         
-        It should_return_a_random_word = () =>
-            _word.ShouldNotBeEmpty();
-    }
+    It should_return_a_random_word = () =>
+        _word.ShouldNotBeEmpty();    
 }

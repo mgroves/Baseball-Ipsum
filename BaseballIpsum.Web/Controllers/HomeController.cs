@@ -1,42 +1,42 @@
-using System.Web.Mvc;
+﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
 using BaseballIpsum.Web.Models;
 
-namespace BaseballIpsum.Web.Controllers
+namespace BaseballIpsum.Web.Controllers;
+
+public class HomeController : Controller
 {
-    public class HomeController : Controller
+    readonly ParagraphService _paragraphService;
+
+    public HomeController()
     {
-        readonly ParagraphService _paragraphService;
+        _paragraphService = new ParagraphService();
+    }
 
-        public HomeController()
-        {
-            _paragraphService = new ParagraphService();
-        }
+    public ViewResult Index()
+    {
+        var initialModel = new SubmitFormViewModel {NumParagraphs = 5};
+        return View(initialModel);
+    }
 
-        public ViewResult Index()
+    [HttpPost]
+    public ViewResult Index(SubmitFormViewModel model)
+    {
+        if (ModelState.IsValid)
         {
-            var initialModel = new SubmitFormViewModel {NumParagraphs = 5};
-            return View(initialModel);
+            model.GeneratedParagraphs = _paragraphService.GetParagraphs(model.NumParagraphs, model.StartWithBaseballIpsum);
         }
+        return View(model);
+    }
 
-        [HttpPost]
-        public ViewResult Index(SubmitFormViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                model.GeneratedParagraphs = _paragraphService.GetParagraphs(model.NumParagraphs, model.StartWithBaseballIpsum);
-            }
-            return View(model);
-        }
+    public ViewResult RestApi()
+    {
+        ViewBag.BaseUrl = Request.Scheme + "://" + Request.Host.Value;
+        return View();
+    }
 
-        public ViewResult RestApi()
-        {
-            ViewBag.BaseUrl = "http://" + Request.ServerVariables["SERVER_NAME"];
-            return View();
-        }
-
-        public ViewResult About()
-        {
-            return View();
-        }
+    public ViewResult About()
+    {
+        return View();
     }
 }
