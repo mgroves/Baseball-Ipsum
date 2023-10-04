@@ -41,6 +41,7 @@ catcher
 cellar
 center field
 center fielder
+changeup
 check swing
 cheese
 chin music
@@ -56,6 +57,7 @@ crooked number
 cubs
 cup of coffee
 curve
+cutter
 cy young
 cycle
 dead ball era
@@ -63,12 +65,14 @@ dead red
 defensive indifference
 designated hitter
 diamond
+dinger
 disabled list
 dodgers
 double play
 double switch
 doubleheader
 dribbler
+dugout
 earned run
 ejection
 error
@@ -82,6 +86,7 @@ field
 fielder's choice
 first base
 first baseman
+fly ball
 flyout
 force
 forkball
@@ -107,8 +112,10 @@ hall of fame
 hardball
 helmet
 hey batter
+hit and run
 hit by pitch
 hitter
+hold
 home
 hot dog
 in the hole
@@ -207,6 +214,7 @@ slider
 slugging
 small ball
 southpaw
+splitter
 sport
 squeeze
 stadium
@@ -236,6 +244,7 @@ unearned run
 visitors
 walk off
 warning track
+wild card
 wild pitch
 win
 wins
